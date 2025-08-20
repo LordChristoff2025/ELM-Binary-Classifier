@@ -1,0 +1,51 @@
+import gradio as gr
+from tensorflow.keras.preprocessing.image import img_to_array
+from PIL import Image
+import numpy as np
+
+
+def predict_image(image):
+    """Preprocesses and predicts on a single image."""
+    img_width = 150
+    img_height = 150
+    img = Image.fromarray(np.uint8(image)).convert(
+        "RGB"
+    )  # Convert to PIL Image and ensure RGB format
+    img = img.resize((img_width, img_height))  # Resize using PIL
+
+    if img is None:
+        return "Invalid image: Resizing failed"
+
+    x = img_to_array(img)
+    x = np.expand_dims(x, axis=0)  # Add batch dimension
+    x = x / 255.0  # Normalize
+    prediction = elm.predict(x)
+
+    # Ensure prediction is a NumPy array and handle potential shape issues
+    prediction = np.array(prediction)
+    if prediction.size > 0:
+        # Calculate percentages based on prediction value
+        real_percentage = (1 - prediction.item()) * 100
+        fake_percentage = prediction.item() * 100
+        return f"Real: {real_percentage:.2f}% Fake: {fake_percentage:.2f}%"
+    else:
+        return "Prediction not available"
+
+
+interface = gr.Interface(
+    fn=predict_image,
+    inputs="image",
+    outputs="text",
+    allow_flagging="manual",  # Allow users to flag uncertain predictions
+    flagging_options=[
+        "incorrect",
+        "other",
+    ],  # specify the options the user can select when flagging
+    css="""
+    .gradio-component-image {
+      width: 300px; 
+    }
+  """,  # Add your CSS here within the gr.Interface constructor
+)
+
+interface.launch(share=True, debug=True)
