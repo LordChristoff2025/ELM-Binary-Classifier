@@ -1,0 +1,107 @@
+import zipfile
+
+import tensorflow as tf
+import numpy as np
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import os
+
+from tqdm import tqdm
+
+def unzip_and_load(zip_file_path, data_dir):
+    with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+        zip_ref.extractall(data_dir)
+
+#remember to change the name of 'realfake.zip' to the name of the uploaded file stored in content
+unzip_and_load('realfake.zip', 'unzipped_data') 
+
+train_datagen = ImageDataGenerator(
+    rescale=1./255,
+
+)
+
+batch_size = 50 # Change Batch Size (Default 32)
+
+train_generator = train_datagen.flow_from_directory(
+    'unzipped_data/train',
+    target_size=(150, 150),
+    batch_size=batch_size,
+    class_mode='binary'
+)
+
+class ELM(object):
+    def __init__(self, input_size, output_size, hidden_size):
+        self.input_size = input_size
+        self.output_size = output_size
+        self.hidden_size = hidden_size
+
+        self.weight = np.random.normal(size=[self.hidden_size, self.input_size])
+        self.bias = np.random.normal(size=[self.hidden_size])
+        self.beta = np.random.normal(size=[self.hidden_size, self.output_size])
+
+    def sigmoid(self, x):
+        return 1.0 / (1.0 + np.exp(-x))
+
+    def relu(self, x):
+        return tf.nn.relu(x)
+
+    def predict(self, X):
+        X = tf.convert_to_tensor(X, dtype=tf.float32)
+        X = tf.reshape(X, [X.shape[0], -1]) # Flatten the input data
+        y = self.relu((X @ self.weight.T) + self.bias) @ self.beta
+        return y
+
+    def train(self, X, y):
+        X = tf.convert_to_tensor(X, dtype=tf.float32)
+        y = tf.convert_to_tensor(y, dtype=tf.float32)
+        X = tf.reshape(X, [X.shape[0], -1])
+        H = self.relu((X @ self.weight.T) + self.bias)
+        H_inv = tf.linalg.pinv(H)
+        # Add a new dimension to y to make it a column vector
+        y = tf.expand_dims(y, axis=-1)  # Now y has shape (32, 1)
+        self.beta = H_inv @ y
+
+
+        loss = tf.reduce_mean(tf.square(self.predict(X) - y))  # Replace with your loss function
+
+        return loss
+
+    def calculate_loss(self, X, y): # define the missing function
+        X = tf.convert_to_tensor(X, dtype=tf.float32)
+        y = tf.convert_to_tensor(y, dtype=tf.float32)
+        y_pred = self.predict(X)
+        loss = tf.reduce_mean(tf.square(y_pred - y))
+        return loss
+
+img_width = 150
+img_height = 150
+hidden_size = 100
+
+elm = ELM(img_width * img_height * 3, 1, hidden_size)
+
+num_epochs = 10 # Change the amount of Epochs (Default 10)
+
+steps_per_epoch = len(train_generator)
+
+for epoch in range(num_epochs):
+
+    train_generator.reset()
+    with tqdm(total=steps_per_epoch, desc=f"Training progress Epoch {epoch+1}/{num_epochs}", unit="batch", colour="green") as pbar:
+        for batch_x, batch_y in train_generator:
+            elm.train(batch_x, batch_y)
+            pbar.update(1)
+            pbar.set_postfix(loss=elm.calculate_loss(batch_x, batch_y))
+
+            if pbar.n == pbar.total:
+                break
+
+val_datagen = ImageDataGenerator(rescale=1./255)
+val_generator = val_datagen.flow_from_directory(
+    'unzipped_data/validation',
+    target_size=(150, 150),
+    batch_size=batch_size,
+    class_mode='binary'
+)
+
+train_acc = []
+val_acc = []
+losses = []
