@@ -1,0 +1,29 @@
+import numpy as np
+from tensorflow.keras.preprocessing import image
+from google.colab import files
+import matplotlib.pyplot as plt
+
+def predict_image(img_path, model):
+  img = image.load_img(img_path, target_size=(150, 150))
+  x = image.img_to_array(img)
+  x = np.expand_dims(x, axis=0)
+  x = x / 255.0
+
+  prediction = model.predict(x)
+  return prediction
+
+uploaded = files.upload()
+for fn in uploaded.keys():
+  img_path = fn
+  prediction = predict_image(img_path, elm)
+
+  img = image.load_img(img_path, target_size=(150, 150))
+  plt.imshow(img)
+  plt.show()
+
+  if prediction[0][0] < 0.5:
+    percentage = (1 - prediction[0][0]) * 100
+    print(f"Prediction: Fake ({min(percentage, 100):.2f}%)")
+  else:
+    percentage = prediction[0][0] * 100
+    print(f"Prediction: Real ({min(percentage, 100):.2f}%)")
