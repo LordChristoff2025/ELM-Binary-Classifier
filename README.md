@@ -8,3 +8,11 @@ The main changes found are:
 - Adding the epoch count to watch the progress of the training
 - Adding a system to compare the results against a user uplaoded image
 - Added Huuging Face's Gradio to allow the use of comparision is a web UI, providing the Colab session is active! 
+
+To try yourself simply start a new project in Google Colab and add the selected blocks of code in order of: 
+
+- ELM-Main
+- Image-Prediction
+- Gradio-UI
+
+Datasets that are downloaded goe into Colab's "Content" folder, however, It should also be worth noting (if you’re new to TensorFlow/Colab) that datasets don’t store permanently, you’ll find after an extended period of time or new day you’ll have to re-upload the dataset and re-train the model before being able to use it again. They can also be called in locally from a google-drive if you link it. 
