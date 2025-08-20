@@ -20,3 +20,5 @@ Datasets that are downloaded goe into Colab's "Content" folder, however, It shou
 Gradio's UI will run, so long as the session is active in Colab, unless externally hosted elsewhere. When the session ends the web UI will time out. 
 
 Colab's inbuilt AI was used to help troubleshoot errors (I'm no expert)
+
+Feel free to use how wanted, the licene is under MIT for any personal use, so long as I and (Popcornell, 2018) are credited. 
