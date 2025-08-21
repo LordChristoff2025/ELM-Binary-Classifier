@@ -22,3 +22,5 @@ Gradio's UI will run, so long as the session is active in Colab, unless external
 Colab's inbuilt AI was used to help troubleshoot errors (I'm no expert)
 
 Feel free to use how wanted, the licene is under MIT for any personal use, so long as I and (Popcornell, 2018) are credited. 
+
+Or find a breif post about it on [medium.com](https://lordchristoff.medium.com/elm-image-classifier-using-tensorflow-f92564bc5efd)
