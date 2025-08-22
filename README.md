@@ -6,7 +6,7 @@ The main changes found are:
 
 - Importing Dataset from locally saved storage form an external source.
 - Adding the epoch count to watch the progress of the training
-- Adding a system to compare the results against a user uplaoded image
+- Adding a system to allow users to directly upload an image to test it on the trained model. 
 - Added [Huuging Face's Gradio](https://huggingface.co/gradio) to allow the use of comparision is a web UI, providing the Colab session is active! 
 
 To try yourself simply start a new project in Google Colab and add the selected blocks of code in order of: 
