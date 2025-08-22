@@ -1,3 +1,5 @@
+# adapted for use from (popcornell, 2018) with various changes in operations and code. 
+
 import zipfile
 
 import tensorflow as tf
