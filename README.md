@@ -15,12 +15,12 @@ To try yourself simply start a new project in Google Colab and add the selected 
 - Image-Prediction
 - Gradio-UI
 
-Datasets that are downloaded goe into Colab's "Content" folder, however, It should also be worth noting (if you’re new to TensorFlow/Colab) that datasets don’t store permanently, you’ll find after an extended period of time or new day you’ll have to re-upload the dataset and re-train the model before being able to use it again. They can also be called in locally from a google-drive if you link it. 
+Datasets that are downloaded go into Colab's "Content" folder, however, It should also be worth noting (if you’re new to TensorFlow/Colab) that datasets don’t store permanently, you’ll find after an extended period of time or new day you’ll have to re-upload the dataset and re-train the model before being able to use it again. They can also be called in locally from a google-drive if you link it. 
 
 Gradio's UI will run, so long as the session is active in Colab, unless externally hosted elsewhere. When the session ends the web UI will time out. 
 
 Colab's inbuilt AI was used to help troubleshoot errors (I'm no expert)
 
-Feel free to use how wanted, the licene is under MIT for any personal use, so long as I and (Popcornell, 2018) are credited. 
+Feel free to use how wanted, the licene is under MIT for any personal use, so long as I (LordChristoff, 2024) and (Popcornell, 2018) are credited. 
 
 Or find a breif post about it on [medium.com](https://lordchristoff.medium.com/elm-image-classifier-using-tensorflow-f92564bc5efd)
