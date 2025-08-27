@@ -1,6 +1,6 @@
 # ELM-Binary-Classifier
 
-Is is a feed-forward neural network known as Extreme Learning Machine (ELM) Binary classifier, adtaped for use from GitHub [popcornell, 2018](https://github.com/popcornell/tfelm/blob/pop_new/ELM_class_example.ipynb) for a Masters Thesis, determining if an unbiast approach to image classification can prove its worth in comparison to other models. This was adapted in the intrests of cyber forensics. The project was undertaken in Google Colab and made use of Tensorflow and Hugging Face's Gradio. 
+Is is a feed-forward neural network known as Extreme Learning Machine (ELM) Binary classifier, adtaped for use from GitHub [popcornell, 2018](https://github.com/popcornell/tfelm/blob/pop_new/ELM_class_example.ipynb)
 
 The main changes found are: 
 
@@ -24,3 +24,9 @@ Colab's inbuilt AI was used to help troubleshoot errors (I'm no expert)
 Feel free to use how wanted, the licene is under MIT for any personal use, so long as I (LordChristoff, 2024) and (Popcornell, 2018) are credited either in the code or project description. 
 
 Or find a breif post about it on [medium.com](https://lordchristoff.medium.com/elm-image-classifier-using-tensorflow-f92564bc5efd)
+
+## Background
+
+In the intrests of cyber forensics and transparency this project was undertaken at Univreisty to determine if the use of Exreme Learning Machine, that provides an unbiased approach to its learning, with its hidden layers. Can provide a solution to determining what is and what isn't fake from online sources. Although the model did work in some cases, it also failed in others. A lot of this was arrtibuted to the ever evolving landscape and sophistication of the data it was trying to determine was real or fake against the dated datasets that were being used. Overfitting and lack of backpropogation was also deemed to not aid the process. 
+
+However, further avenues of research into this method such as QELM or QGANs was determined to be the next step in such research. 
