@@ -13,7 +13,7 @@ To try yourself simply start a new project in Google Colab and add the selected 
 
 - ELM-Main
 - Image-Prediction
-- [Gradio-UI]
+- Gradio-UI
 
 Datasets that are downloaded go into Colab's "Content" folder, however, It should also be worth noting (if you’re new to TensorFlow/Colab) that datasets don’t store permanently, you’ll find after an extended period of time or new day you’ll have to re-upload the dataset and re-train the model before being able to use it again. They can also be called in locally from a google-drive if you link it. One of the main datasets I used was [CIFAKE from Kaggle](https://www.kaggle.com/datasets/birdy654/cifake-real-and-ai-generated-synthetic-images), as well as a handful of others.
 
