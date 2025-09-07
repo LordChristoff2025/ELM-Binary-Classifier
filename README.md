@@ -30,3 +30,7 @@ Or find a breif post about it on [medium.com](https://lordchristoff.medium.com/e
 In the intrests of cyber forensics and transparency this project was undertaken at Univreisty to determine if the use of Exreme Learning Machine, that provides an unbiased approach to its learning, with its hidden layers. Can provide a solution to determining what is and what isn't fake from online sources. Although the model did work in some cases, it also failed in others. A lot of this was arrtibuted to the ever evolving landscape and sophistication of the data it was trying to determine was real or fake against the dated datasets that were being used. Overfitting and lack of backpropogation was also deemed to not aid the process. 
 
 However, further avenues of research into this method such as QELM or QGANs was determined to be the next step in such research. 
+
+----
+
+Project was done merely for academic purposes and no finanical gain was made from it. 
