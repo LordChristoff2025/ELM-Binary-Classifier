@@ -34,3 +34,5 @@ However, further avenues of research into this method such as QELM or QGANs was 
 ----
 
 Project was done merely for academic purposes and no finanical gain was made from it. 
+
+The project has now been adapted/added to Huggingface spaces https://huggingface.co/spaces/SirChristoff/ELM-Binary-Classifier
